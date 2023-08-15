@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .star_cont{
+        display: flex;
+        font-size: 40px;
+        padding: 10px;
+        color: gray;
+        cursor: pointer;
+    }
+    .star-filled{
+        color: yellow;
+    }
+</style>
+<body>
+    <div class="container">
+
+        <h1>Star Rating</h1>
+        <div id="star_cont" class="star_cont">
+            <span class="star" data-index='1'>&#9733;</span>
+            <span class="star" data-index='2'>&#9733;</span>
+            <span class="star" data-index='3'>&#9733;</span>
+            <span class="star" data-index='4'>&#9733;</span>
+            <span class="star" data-index='5'>&#9733;</span>
+        </div>
+
+        <h2 class="count">Rating Count: 0</h2>
+    </div>
+</body>
+</html>
+<script>
+    let contains=document.querySelector("#star_cont")
+    let star=document.querySelectorAll(".star")
+    let filled=0;
+    contains.addEventListener('click',function(e){
+        let clicked=e.target.dataset.index;
+        // console.log(clicked)
+        
+        for(let i=0;i<5;i++){
+            star[i].classList.remove('star-filled')
+        }
+
+        for(let i=0;i<clicked;i++){
+            star[i].classList.add('star-filled')
+        }
+
+        document.querySelector(".count").innerText=`Rating Count: ${clicked}`
+        filled=clicked
+
+        
+    })
+    contains.addEventListener('mouseover',function(e){
+        let clicked=e.target.dataset.index;
+        // console.log(clicked)
+        
+        for(let i=0;i<5;i++){
+            star[i].classList.remove('star-filled')
+        }
+
+        for(let i=0;i<clicked;i++){
+            star[i].classList.add('star-filled')
+        }
+
+
+        
+    })
+    contains.addEventListener('mouseleave',function(e){
+        let clicked=e.target.dataset.index;
+        // console.log(clicked)
+        
+        for(let i=0;i<5;i++){
+            star[i].classList.remove('star-filled')
+        }
+
+        for(let i=0;i<filled;i++){
+            star[i].classList.add('star-filled')
+        }
+
+        
+    })
+</script>
