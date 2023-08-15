@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .number {
+            font-size: 30px;
+        }
+        .add:active {
+            background-color: lightsalmon;
+        }
+        .sub:active {
+            background-color: lightsalmon;
+        }
+        .reset:active {
+            background-color: lightsalmon;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <span class="number" id="number">0</span>
+        <div class="row">Increment/Decrement by <input type="number" name="" id="increment" min="1" max="10" value="1"></div>
+        <div class="row">
+            <button id="add" class="add">+</button>
+            <button id="sub" class="sub">-</button>
+        </div>
+        <button id="reset" class="reset">Reset</button>
+    </div>
+
+    <script>
+        let inc = document.getElementById('increment');
+        let add = document.getElementById('add');
+        let sub = document.getElementById('sub');
+        let reset = document.getElementById('reset');
+        let num = 1;
+
+        inc.addEventListener('input', function (e) {
+            num = parseInt(e.target.value); // Parse the input value as an integer
+            console.log(num);
+        });
+
+        add.addEventListener('click', function (e) {
+            let currValue = document.getElementById('number');
+            let total = parseInt(currValue.innerText) + num; // Parse the current value as an integer
+
+            currValue.innerText = total;
+        });
+
+        sub.addEventListener('click', function (e) {
+            let currValue = document.getElementById('number');
+            let total = parseInt(currValue.innerText) - num; // Parse the current value as an integer
+
+            if (total < 0) {
+                total = 0;
+            }
+            currValue.innerText = total;
+        });
+
+        reset.addEventListener('click', function (e) {
+            let currValue = document.getElementById('number');
+            currValue.innerText = 0;
+        });
+    </script>
+</body>
+</html>
