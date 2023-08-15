@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bishop Chessboard</title>
+</head>
+<style>
+    .table{
+        margin: 0 auto;
+    }
+    .box{
+        width: 70px;
+        height: 70px;
+        border: 1px solid gray;
+        border-style: inset;
+    }
+    .black{
+        background-color: black;
+    }
+    .white{
+        background-color: white;
+    }
+    .blue{
+        background-color: blue;
+    }
+
+
+</style>
+<body>
+    <table id="table" class="table" cellspacing="'0"></table>
+</body>
+</html>
+<script>
+    let table=document.getElementById('table')
+
+    for(let i=0;i<8;i++){
+        let tr=document.createElement('tr')
+        let white = i%2==0 ? true : false;
+        for(let j=0;j<8;j++){
+            let td=document.createElement('td')
+            if(white){
+                td.setAttribute("class","box white")
+            }else{
+                td.setAttribute("class","box black")
+            }
+            white=!white
+            tr.appendChild(td)
+        }
+    }
+    table.appendChild(tr)
+</script>
