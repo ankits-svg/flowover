@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .box-container{
+        border: 2px solid blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 400px;
+        height: 400px;
+    }
+    .row{
+        display: flex;
+        justify-content: space-between;
+    }
+    .box{
+        width: 100px;
+        height: 100px;
+        border: 3px solid black;
+        cursor: pointer;
+    }
+    .green-color{
+        background-color:green;
+    }
+</style>
+<body>
+    <div class="container">
+
+        <h1>C shape box</h1>
+        <div id='box-container' class="box-container">
+            <div class="row">
+                <div class="box" data-index="0"></div>
+                <div class="box" data-index="1"></div>
+                <div class="box" data-index="2"></div>
+            </div>
+            <div class="row">
+                <div class="box" data-index="3"></div>
+            </div>
+            <div class="row">
+                <div class="box" data-index="4"></div>
+                <div class="box" data-index="5"></div>
+                <div class="box" data-index="6"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let boxcontainer=document.querySelector("#box-container")
+    let box=document.querySelectorAll('.box')
+    let queue=[]
+    boxcontainer.addEventListener('click',function(e){
+        let index=e.target.dataset.index
+        console.log(index)
+
+        if(index!==undefined){
+            queue.push(index)
+            box[index].classList.add('green-color')
+        }
+
+        if(queue.length===7){
+            let count=0;
+            while(queue.length>0){
+                let ind=queue.shift()
+                count++;
+                setTimeout(()=>{
+                    box[ind].classList.remove('green-color')
+                },count*1000)
+            }
+        }
+    })
+</script>
